@@ -13,6 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+
+    - name: Debug repo structure
+      run: ls -R
+
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
@@ -20,7 +24,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/devops-demo:latest ./devops-demo
+      run: |
+            docker build -t ${{ secrets.DOCKER_USERNAME }}/devops-demo:latest ./devops-demo
 
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USERNAME }}/devops-demo:latest

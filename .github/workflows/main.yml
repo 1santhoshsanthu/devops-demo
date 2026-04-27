@@ -24,6 +24,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./devops-demo
           push: true
           tags: 1santhoshsanthu/devops-demo:latest
